@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book a Car - Novo Motors</title>
+    <link rel="stylesheet" href="book.css" />
+  </head>
+  <body>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="/index.html">HOME</a></li>
+        <li><a href="/cars.html">CARS</a></li>
+        <li><a href="/experience.html">EXPERIENCES</a></li>
+        <li><a href="/about.html">ABOUT US</a></li>
+      </ul>
+    </nav>
+    <section class="booking">
+      <div class="booking-content">
+        <h1>Book Your Car Here</h1>
+        <form id="bookingForm">
+          <label for="carSelect">Select a Car:</label>
+          <select id="carSelect" name="car" required>
+            <option value="" disabled selected>Select a car</option>
+            <option value="Novo S2">Novo S2</option>
+            <option value="Novo S4">Novo S4</option>
+            <option value="Novo S6">Novo S6</option>
+          </select>
+          <label for="name">Your Name:</label>
+          <input type="text" id="name" name="name" required />
+          <label for="email">Your Email:</label>
+          <input type="email" id="email" name="email" required />
+          <label for="address">Address</label>
+          <input type="text" id="address" name="address" required />
+          <button type="submit">Confirm Booking</button>
+        </form>
+        <div id="successMessage" class="hidden">
+          <h2>Booking Successful! Delivery Countdown</h2>
+          <p id="bookingDetails"></p>
+          <br>
+          <p>Countdown till delivery</p>
+          <iframe src="https://free.timeanddate.com/countdown/i9k71y4j/n1897/cf100/cm0/cu4/ct0/cs0/ca0/co0/cr0/ss0/cac000/cpc000/pct/tcfff/fs300/szw448/szh189/iso2024-10-07T00:00:00" allowtransparency="true" frameborder="0" width="448" height="189"></iframe>
+
+        </div>
+      </div>
+    </section>
+    <script>
+      document
+        .getElementById("bookingForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          const car = this.car.value;
+          const name = this.name.value;
+          const address = this.address.value;
+          document.getElementById(
+            "bookingDetails"
+          ).textContent = `${name.toUpperCase()}, you have successfully booked the new ${car}. The car will be delivered to ${address} within 10-15 business days.`;
+          document.getElementById("successMessage").classList.remove("hidden");
+          this.reset();
+        });
+    </script>
+  </body>
+</html>
